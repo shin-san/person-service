@@ -1,9 +1,10 @@
 
+
 insert into public.person(id,name) values (1,'JC');
 
-insert into public.social(id,fk_person_social,name,value) values (1, 1, 'github', 'shin-san');
-insert into public.social(id,fk_person_social,name,value) values (2, 1, 'linkedin', 'naythanc');
-insert into public.social(id,fk_person_social,name,value) values (3, 1, 'contact', 'nchan009@gmail.com');
+insert into public.social(id,fk_person_social,name,social_value) values (1, 1, 'github', 'shin-san');
+insert into public.social(id,fk_person_social,name,social_value) values (2, 1, 'linkedin', 'naythanc');
+insert into public.social(id,fk_person_social,name,social_value) values (3, 1, 'contact', 'nchan009@gmail.com');
 
 insert into public.skill(id,fk_person_skill) values (1, 1);
 

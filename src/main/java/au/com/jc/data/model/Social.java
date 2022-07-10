@@ -27,7 +27,7 @@ public class Social {
 
     private String name;
 
-    private String value;
+    private String social_value;
 
 
 }
