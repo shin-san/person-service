@@ -24,6 +24,13 @@ jobs:
           distribution: 'adopt'
           cache: 'maven'
 
+      - name: Cache the Maven packages to speed up build
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
@@ -38,11 +45,12 @@ jobs:
           password: ${{ env.REGISTRY_PASSWORD }}
 
       - name: Build with Maven
-        run: mvn clean -B package
+        run: mvn clean -B package -f pom.xml
 
       - name: Docker Build and Push
         uses: docker/build-push-action@v2
         with:
+          context: .
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ env.IMAGE_REGISTRY }}/person-service:dev
