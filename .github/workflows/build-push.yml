@@ -3,7 +3,7 @@ name: reg-build-push
 on:
   push:
     branches:
-      - 'main'
+      - 'master'
 
 env:
   REGISTRY_USER: registry
