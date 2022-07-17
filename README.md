@@ -45,11 +45,13 @@ To run the service, you can either use Docker's UI (if available) and expose por
 
 Otherwise, you can use the following command to run it:
 ```shell
-docker run -e POSTGRES.URL=localhost -p 8080:8080 -d --name person-service shin-san/person-service
+docker run -e POSTGRES_URL=localhost -e DB_USERNAME=test -e DB_PASSWORD=test -p 8080:8080 -d --name person-service shin-san/person-service
 ```
 
 This will run the service in Docker with:
-- an environment variable of `POSTGRES.URL` set to `locahost`
+- an environment variable of `POSTGRES_URL` set to `locahost`
+- an environment variable of `DB_USERNAME` set to `test`
+- an environment variable of `DB_PASSWORD` set to `test`
 - exposed container port of `8080` to local port `8080`
 - detached running the container in background
 - container is named as `person-service`  
