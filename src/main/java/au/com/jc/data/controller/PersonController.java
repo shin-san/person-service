@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
+@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
 @Slf4j
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/api/v1")
 public class PersonController {
 
     @Autowired

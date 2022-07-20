@@ -15,6 +15,6 @@ spring:
       ddl-auto: create
   #      show_sql: true
 
-  mvc:
-    servlet:
-      path: /api/v1
+#  mvc:
+#    servlet:
+#      path: /api/v1
