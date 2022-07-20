@@ -29,5 +29,5 @@ public class Social {
 
     private String social_value;
 
-
+    private String url;
 }
