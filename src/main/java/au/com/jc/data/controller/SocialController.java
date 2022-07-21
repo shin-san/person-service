@@ -22,13 +22,13 @@ public class SocialController {
     @Autowired
     SocialRepository socialRepository;
 
-    @GetMapping("/all")
+    @GetMapping(value = "/all", produces = "application/json")
     public ResponseEntity<List<Social>> getAllSocial() {
         List<Social> socialList = socialRepository.findAll();
         return new ResponseEntity<>(socialList, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<Optional<Social>> getSocialById(@PathVariable long id) {
         Optional<Social> socials = socialRepository.findById(id);
 

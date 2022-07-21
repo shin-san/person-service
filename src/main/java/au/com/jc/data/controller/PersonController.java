@@ -19,13 +19,13 @@ public class PersonController {
     @Autowired
     PersonRepository personRepository;
 
-    @GetMapping("/all")
+    @GetMapping(value = "/all", produces = "application/json")
     public ResponseEntity<List<Person>> getAllPerson() {
         List<Person> personList = personRepository.findAll();
         return new ResponseEntity<>(personList, HttpStatus.OK);
     }
 
-    @GetMapping("/{name}")
+    @GetMapping(value = "/{name}", produces = "application/json")
     public ResponseEntity<List<Person>> getPerson(@PathVariable String name) {
 
         List<Person> personList = personRepository.findByNameIgnoreCase(name);
