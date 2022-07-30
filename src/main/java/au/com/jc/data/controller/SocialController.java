@@ -14,7 +14,7 @@ import java.util.Optional;
 @CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/social")
+@RequestMapping("/social")
 public class SocialController {
 
     @Autowired
