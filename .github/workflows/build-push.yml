@@ -57,4 +57,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           context: .
           push: true
-          tags: jc-dev/person-service:dev
+          tags: ${{ env.IMAGE_REGISTRY }}/jc-dev/person-service:latest
