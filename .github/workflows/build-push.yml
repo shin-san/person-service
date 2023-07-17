@@ -9,7 +9,7 @@ on:
 env:
   REGISTRY_USER: registry
   IMAGE_REGISTRY: registry.naythanc.dev
-  REGISTRY_PASSWORD: '${{ secrets.REGISTRY_PASSWORD }}'
+  REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
 
 jobs:
   build:
@@ -47,7 +47,7 @@ jobs:
         with:
           registry: ${{ env.IMAGE_REGISTRY }}
           username: ${{ env.REGISTRY_USER}}
-          password: '${{ env.REGISTRY_PASSWORD }}'
+          password: ${{ env.REGISTRY_PASSWORD }}
 
       - name: Docker Build and Push
         uses: docker/build-push-action@v4
