@@ -7,9 +7,8 @@ on:
       - 'main'
 
 env:
-  REGISTRY_USER: registry
-  IMAGE_REGISTRY: registry.naythanc.dev
-  REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build:
@@ -36,12 +35,12 @@ jobs:
       - name: Build with Maven
         run: mvn clean -B package -f pom.xml
       
-      - name: Login to Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ${{ env.IMAGE_REGISTRY }}
-          username: ${{ env.REGISTRY_USER}}
-          password: ${{ env.REGISTRY_PASSWORD }}
+#      - name: Login to Registry
+#        uses: docker/login-action@v2
+#        with:
+#          registry: ${{ env.IMAGE_REGISTRY }}
+#          username: ${{ env.REGISTRY_USER}}
+#          password: ${{ env.REGISTRY_PASSWORD }}
         
 #       - name: Set up QEMU
 #         uses: docker/setup-qemu-action@v2
@@ -51,10 +50,25 @@ jobs:
 #         with:
 #           buildkitd-flags: --debug
 
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
       - name: Docker Build and Push
         uses: docker/build-push-action@v4
         with:
           platforms: linux/arm64
           context: .
           push: true
-          tags: ${{ env.IMAGE_REGISTRY }}/jc-dev/person-service:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+#          tags: ${{ env.IMAGE_REGISTRY }}/jc-dev/person-service:latest
