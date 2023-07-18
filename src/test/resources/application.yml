@@ -20,6 +20,9 @@ spring:
     hibernate:
       ddl-auto: create
   #      show_sql: true
+okta:
+  client:
+    scope: test
 
 #  mvc:
 #    servlet:

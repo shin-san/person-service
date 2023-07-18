@@ -17,7 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity(jsr250Enabled = true)
 public class WebSecurityConfig {
 
-    @Value("${OKTA_CLIENT_SCOPE}")
+    @Value("${okta.client.scope}")
     private String scope;
 
     @Bean
