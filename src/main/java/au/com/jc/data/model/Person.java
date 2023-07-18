@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class Person {
     private List<Social> socials = new ArrayList<>();
 
     @OneToMany(mappedBy = "person_skill", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Skill> skills = new ArrayList<>();;
+    private List<Skill> skills = new ArrayList<>();
 
     @OneToMany(mappedBy = "person_misc", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Misc> misc;
