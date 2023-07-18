@@ -25,7 +25,9 @@ public class WebSecurityConfig {
         http.cors(CorsConfigurer::disable)
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.GET, "/api/**")
+                .authorizeHttpRequests(auth -> auth
+                    .requestMatchers("/actuator/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/**")
                     .hasAuthority("SCOPE_" + scope)
                     .anyRequest()
                     .authenticated())
