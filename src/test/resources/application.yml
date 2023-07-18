@@ -1,5 +1,11 @@
 
 spring:
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: https://dev-79580021.okta.com/oauth2/ausa8khazhLhrqATr5d7
+          jwk-set-uri: https://dev-79580021.okta.com/oauth2/ausa8khazhLhrqATr5d7/v1/keys
   datasource:
     hikari: ## default connection pool
       connectionTimeout: 20000

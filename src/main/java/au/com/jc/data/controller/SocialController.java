@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
 @Slf4j
 @RestController
 @RequestMapping("/social")
