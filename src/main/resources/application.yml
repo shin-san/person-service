@@ -33,7 +33,7 @@ spring:
     password: ${DB_PASSWORD:passw0rd}
   jpa:
     database: POSTGRESQL
-    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: create
 #      show_sql: true
