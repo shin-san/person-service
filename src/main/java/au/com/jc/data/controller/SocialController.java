@@ -20,13 +20,13 @@ public class SocialController {
     SocialRepository socialRepository;
 
     @GetMapping(value = "/all", produces = "application/json")
-    public ResponseEntity<List<Social>> getAllSocial() {
+    public ResponseEntity<?> getAllSocial() {
         List<Social> socialList = socialRepository.findAll();
         return new ResponseEntity<>(socialList, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity<Optional<Social>> getSocialById(@PathVariable long id) {
+    public ResponseEntity<?> getSocialById(@PathVariable long id) {
         Optional<Social> socials = socialRepository.findById(id);
 
         return new ResponseEntity<>(socials, HttpStatus.OK);
